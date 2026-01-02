@@ -2,9 +2,9 @@
 {
     public abstract class BuildingsCity
     {
-        private string name = "_";
-        private (int x, int y) coordinatesBuildings = (0, 0);
-        private int distancePriceFactorFor1000m = 0;
+        private string name;
+        private (int x, int y) coordinatesBuildings;
+        private int distancePriceFactorFor1000m;
 
         public string Name
         {
