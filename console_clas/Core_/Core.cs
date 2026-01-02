@@ -7,7 +7,7 @@ namespace console_clas.Core_
     {
         private static readonly Random random = new();
         static short i = 0;
-        private const byte CountHouse = 7;
+        private const byte CountHouse = 12;
         private const byte MinSquare = 40;
         private const short MaxSquare = 401;
         private const byte MinCoordinates = 0;
