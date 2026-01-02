@@ -31,7 +31,8 @@ namespace console_clas.Core_
             {
                 Console.Write($"{price} $ | ");
             }
+            Console.WriteLine("\nНажмите любую клавишу чтобы выйти");
+            Console.ReadLine();
         }
-
     }
 }
