@@ -1,11 +1,12 @@
 ﻿using console_clas.Building.City;
 using console_clas.Building.House;
+using console_clas.Entity.Profile;
 
 namespace console_clas.Core_
 {
     public class GameCore
     {
-        public static void Main(List<HouseBase> houses, BuildingsCity[] buildings)
+        public static void Main(List<HouseBase> houses, BuildingsCity[] buildings, PlayersBase player)
         {
             short i = 0;
 
@@ -26,12 +27,14 @@ namespace console_clas.Core_
             Console.WriteLine($"{buildings[1].Name}, {buildings[1].DistancePriceFactorFor1000m}, {buildings[1].CoordinatesBuildings}");
             Console.WriteLine($"{buildings[2].Name}, {buildings[2].DistancePriceFactorFor1000m}, {buildings[2].CoordinatesBuildings}");
 
-            Console.Write($"All Prices: ");
+            Console.Write($"\nAll Prices: ");
             foreach (var price in ListPrices)
             {
                 Console.Write($"{price} $ | ");
             }
-            Console.WriteLine("\nНажмите любую клавишу чтобы выйти");
+            Console.WriteLine("\n");
+            Console.WriteLine($"Id: {player.Id} Name: {player.Name} Balance: {player.Balance} $\n");
+            Console.WriteLine("Нажмите любую клавишу чтобы выйти");
             Console.ReadLine();
         }
     }

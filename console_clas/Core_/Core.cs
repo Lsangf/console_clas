@@ -1,5 +1,6 @@
 ﻿using console_clas.Building.City;
 using console_clas.Building.House;
+using console_clas.Entity.Profile;
 
 namespace console_clas.Core_
 {
@@ -19,6 +20,7 @@ namespace console_clas.Core_
             {
                 try
                 {
+                    PlayersBase player = CreatePlayer();
                     List<HouseBase> houses = [];
 
                     GasStation gas = new((random.Next(MinCoordinates, MaxCoordinates), random.Next(MinCoordinates, MaxCoordinates)));
@@ -31,7 +33,7 @@ namespace console_clas.Core_
                     {
                         houses.Add(CreateHouse());
                     }
-                    GameCore.Main(houses, buildings);
+                    GameCore.Main(houses, buildings, player);
                     break;
                 }
                 catch (ArgumentException ex)
@@ -45,7 +47,7 @@ namespace console_clas.Core_
 
         public static HouseBase CreateHouse()
         {
-            while (true) 
+            while (true)
             {
                 try
                 {
@@ -64,6 +66,30 @@ namespace console_clas.Core_
                     Console.WriteLine($"=={ex.Message}==");
                 }
             }
+        }
+
+        public static PlayersBase CreatePlayer()
+        {
+            byte lengthId = 10;
+            byte lengthName = 5;
+            string id = GenerateRandomIdName(lengthId);
+            string name = GenerateRandomIdName(lengthName);
+
+            return new RealPlayer(id, name, 100000);
+
+        }
+
+        public static string GenerateRandomIdName(byte length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+            char[] buffer = new char[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                buffer[i] = chars[random.Next(chars.Length)];
+            }
+
+            return new string(buffer);
         }
     }
 }
