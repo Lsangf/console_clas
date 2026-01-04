@@ -3,7 +3,7 @@
 
 namespace console_clas.Entity.Profile
 {
-    public abstract class Players
+    public abstract class PlayersBase
     {
         private string id;
         private string name;
@@ -49,7 +49,7 @@ namespace console_clas.Entity.Profile
             protected set { this.buyHouses = value; }
         }
 
-        public Players(string id, string name, long balance)
+        public PlayersBase(string id, string name, long balance)
         {
             Id = id;
             Name = name;

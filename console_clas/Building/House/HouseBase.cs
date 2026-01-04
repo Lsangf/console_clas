@@ -123,7 +123,7 @@ namespace console_clas.Building.House
            Price = CountingHousePrice.Calculation(this, City);
         }
 
-        public void UpdateCanBuySell(Players People1)
+        public void UpdateCanBuySell(PlayersBase People1)
         {
             CanBuy = ComparisonPlayerData.CanPlayerBuyHouse(this, People1);
             CanSell = ComparisonPlayerData.CanPlayerSellHouse(this, People1);
