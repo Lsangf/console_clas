@@ -49,11 +49,12 @@ namespace console_clas.Entity.Profile
             protected set { this.buyHouses = value; }
         }
 
-        public PlayersBase(string id, string name, long balance)
+        public PlayersBase(string id, string name, long balance, List<HouseBase> buyHouses)
         {
             Id = id;
             Name = name;
             Balance = balance;
+            BuyHouses = buyHouses;
         }
 
         public void PrintInfo()
