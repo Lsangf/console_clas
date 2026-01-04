@@ -1,12 +1,16 @@
 ﻿using console_clas.Building.City;
+using console_clas.Building.Interface;
+
 namespace console_clas.Building.House
 {
-    public abstract class HouseBase
+    public abstract class HouseBase : IBuy, ISell
     {
         private int square;
         private int floors;
         private int rooms;
         private (int x, int y) coordinatesHouse;
+        private bool canBuy;
+        private bool canSell;
 
         private int price;
 
@@ -70,6 +74,44 @@ namespace console_clas.Building.House
                 if (value < 0) 
                     throw new ArgumentException("Цена не может быть отрицательной");
                 this.price = value;
+            }
+        }
+
+        public bool CanBuy 
+        {
+            get { return canBuy; } set { canBuy = value; }
+        }
+
+        public bool CanSell 
+        { 
+            get { return canSell; } set { canSell = value; } 
+        }
+
+        public void Buy()
+        {
+            if (CanBuy)
+            {
+                Console.WriteLine("Дом куплен");
+                CanBuy = false;
+                CanSell = true;
+            }
+            else
+            {
+                Console.WriteLine("Дом нельзя купить");
+            }
+        }
+
+        public void Sell()
+        {
+            if (CanSell)
+            {
+                Console.WriteLine("Дом продан");
+                CanSell = false;
+                CanBuy = true;
+            }
+            else
+            {
+                Console.WriteLine("Дом нельзя продать");
             }
         }
 
