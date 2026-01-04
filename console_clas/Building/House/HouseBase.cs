@@ -1,5 +1,6 @@
 ﻿using console_clas.Building.City;
 using console_clas.Building.Interface;
+using console_clas.Entity.Profile;
 
 namespace console_clas.Building.House
 {
@@ -122,11 +123,13 @@ namespace console_clas.Building.House
            Price = CountingHousePrice.Calculation(this, City);
         }
 
-        public void UpdateCanBuySell(??)
+        public void UpdateCanBuySell(Players People1)
         {
-            CanBuy = ??;
-            CanSell = ??;
+            CanBuy = ComparisonPlayerData.CanPlayerBuyHouse(this, People1);
+            CanSell = ComparisonPlayerData.CanPlayerSellHouse(this, People1);
         }
+
+
 
     }
 }

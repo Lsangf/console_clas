@@ -1,14 +1,14 @@
 ﻿using console_clas.Building.House;
-using console_clas.Players.InterfacePlayer;
+//using console_clas.Entity.InterfacePlayer;
 
-namespace console_clas.Players.Profile
+namespace console_clas.Entity.Profile
 {
-    abstract class Players
+    public abstract class Players
     {
         private string id;
         private string name;
         private long balance;
-        private List<HouseBase> buyHouses = [];
+        private List<HouseBase> buyHouses;
 
         public string Id
         {
@@ -46,6 +46,14 @@ namespace console_clas.Players.Profile
         public List<HouseBase> BuyHouses
         {
             get { return this.buyHouses; }
+            protected set { this.buyHouses = value; }
+        }
+
+        public Players(string id, string name, long balance)
+        {
+            Id = id;
+            Name = name;
+            Balance = balance;
         }
     }
 }
