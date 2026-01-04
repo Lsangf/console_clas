@@ -79,12 +79,14 @@ namespace console_clas.Building.House
 
         public bool CanBuy 
         {
-            get { return canBuy; } set { canBuy = value; }
+            get { return canBuy; } 
+            set { canBuy = value; }
         }
 
         public bool CanSell 
         { 
-            get { return canSell; } set { canSell = value; } 
+            get { return canSell; } 
+            set { canSell = value; } 
         }
 
         public void Buy()
@@ -119,5 +121,12 @@ namespace console_clas.Building.House
         {
            Price = CountingHousePrice.Calculation(this, City);
         }
+
+        public void UpdateCanBuySell(??)
+        {
+            CanBuy = ??;
+            CanSell = ??;
+        }
+
     }
 }
