@@ -51,15 +51,17 @@ namespace console_clas.Core_
             {
                 try
                 {
+                    byte lengthId = 10;
+                    string id = GenerateRandomIdName(lengthId);
                     int square = random.Next(MinSquare, MaxSquare);
                     int x = random.Next(MinCoordinates, MaxCoordinates);
                     int y = random.Next(MinCoordinates, MaxCoordinates);
 
-                    if (square <= 100) return new RealHouse(square, 1, 1, (x, y));
-                    if (square <= 200) return new RealHouse(square, 1, 2, (x, y));
-                    if (square <= 250) return new RealHouse(square, 2, 3, (x, y));
-                    if (square <= 300) return new RealHouse(square, 2, 4, (x, y));
-                    return new RealHouse(square, 3, 5, (x, y));
+                    if (square <= 100) return new RealHouse(id, square, 1, 1, (x, y));
+                    if (square <= 200) return new RealHouse(id, square, 1, 2, (x, y));
+                    if (square <= 250) return new RealHouse(id, square, 2, 3, (x, y));
+                    if (square <= 300) return new RealHouse(id, square, 2, 4, (x, y));
+                    return new RealHouse(id, square, 3, 5, (x, y));
                 }
                 catch (ArgumentException ex)
                 {

@@ -14,18 +14,18 @@ namespace console_clas.Core_
 
             foreach (var house in houses)
             {
-                Console.WriteLine($"Дом {i} | Площадь: {house.Square} Этажей: {house.Floors} Комант: {house.Rooms} Координаты: {house.CoordinatesHouse}");
-
                 house.PriceUpdate(buildings);
 
-                Console.WriteLine($"Цена: {house.Price} $");
+                house.PrintInfo();
+
                 Console.WriteLine();
                 ListPrices.Add(house.Price);
                 i++;
             }
-            Console.WriteLine($"{buildings[0].Name}, {buildings[0].DistancePriceFactorFor1000m}, {buildings[0].CoordinatesBuildings}");
-            Console.WriteLine($"{buildings[1].Name}, {buildings[1].DistancePriceFactorFor1000m}, {buildings[1].CoordinatesBuildings}");
-            Console.WriteLine($"{buildings[2].Name}, {buildings[2].DistancePriceFactorFor1000m}, {buildings[2].CoordinatesBuildings}");
+
+            buildings[0].PrintInfo();
+            buildings[1].PrintInfo();
+            buildings[2].PrintInfo();
 
             Console.Write($"\nAll Prices: ");
             foreach (var price in ListPrices)

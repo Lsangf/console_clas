@@ -1,6 +1,8 @@
-﻿namespace console_clas.Building.City
+﻿using console_clas.Interface;
+
+namespace console_clas.Building.City
 {
-    public abstract class BuildingsCity
+    public abstract class BuildingsCity : IPrintInfo
     {
         private string name;
         private (int x, int y) coordinatesBuildings;
@@ -42,6 +44,11 @@
         protected BuildingsCity((int x, int y) coordinatesBuildings)
         {
             CoordinatesBuildings = coordinatesBuildings;
+        }
+
+        public void PrintInfo()
+        {
+            BuildingPrintInfo.PrintBuildingInfo(this);
         }
     }
 }

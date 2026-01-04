@@ -2,7 +2,7 @@
 {
     internal class RealHouse : HouseBase
     {
-        public RealHouse(int square, int floors, int rooms, (int x, int y) coordinatesHouse) : base(square, floors, rooms, coordinatesHouse)
+        public RealHouse(string idHouse, int square, int floors, int rooms, (int x, int y) coordinatesHouse) : base(idHouse, square, floors, rooms, coordinatesHouse)
         {
         }
     }

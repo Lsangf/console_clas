@@ -1,9 +1,9 @@
 ﻿using console_clas.Building.House;
-//using console_clas.Entity.InterfacePlayer;
+using console_clas.Interface;
 
 namespace console_clas.Entity.Profile
 {
-    public abstract class PlayersBase
+    public abstract class PlayersBase : IPrintInfo
     {
         private string id;
         private string name;
@@ -54,6 +54,11 @@ namespace console_clas.Entity.Profile
             Id = id;
             Name = name;
             Balance = balance;
+        }
+
+        public void PrintInfo()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using console_clas.Building.City;
-using console_clas.Building.Interface;
 using console_clas.Entity.Profile;
+using console_clas.Interface;
 
 namespace console_clas.Building.House
 {
-    public abstract class HouseBase : IBuy, ISell
+    public abstract class HouseBase : IPrintInfo
     {
+        private string idHouse;
         private int square;
         private int floors;
         private int rooms;
@@ -15,12 +16,24 @@ namespace console_clas.Building.House
 
         private int price;
 
-        protected HouseBase(int square, int floors, int rooms, (int x, int y) coordinatesHouse)
+        protected HouseBase(string idHouse, int square, int floors, int rooms, (int x, int y) coordinatesHouse)
         {
+            IdHouse = idHouse;
             Square = square;
             Floors = floors;
             Rooms = rooms;
             CoordinatesHouse = coordinatesHouse;
+        }
+
+        public string IdHouse
+        {
+            get { return this.idHouse; }
+            protected set
+            {
+                if (string.IsNullOrWhiteSpace(value)) 
+                    throw new ArgumentException("Id дома не может быть пустым");
+                this.idHouse = value;
+            }
         }
 
         public int Square
@@ -90,34 +103,6 @@ namespace console_clas.Building.House
             set { canSell = value; } 
         }
 
-        public void Buy()
-        {
-            if (CanBuy)
-            {
-                Console.WriteLine("Дом куплен");
-                CanBuy = false;
-                CanSell = true;
-            }
-            else
-            {
-                Console.WriteLine("Дом нельзя купить");
-            }
-        }
-
-        public void Sell()
-        {
-            if (CanSell)
-            {
-                Console.WriteLine("Дом продан");
-                CanSell = false;
-                CanBuy = true;
-            }
-            else
-            {
-                Console.WriteLine("Дом нельзя продать");
-            }
-        }
-
         public void PriceUpdate(IEnumerable<BuildingsCity> City)
         {
            Price = CountingHousePrice.Calculation(this, City);
@@ -129,7 +114,9 @@ namespace console_clas.Building.House
             CanSell = ComparisonPlayerData.CanPlayerSellHouse(this, People1);
         }
 
-
-
+        public void PrintInfo()
+        {
+            HousePrintInfo.PrintHouseInfo(this);
+        }
     }
 }
