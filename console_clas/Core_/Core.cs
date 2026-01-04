@@ -77,7 +77,7 @@ namespace console_clas.Core_
             string id = GenerateRandomIdName(lengthId);
             string name = GenerateRandomIdName(lengthName);
 
-            return new RealPlayer(id, name, 100000);
+            return new RealPlayer(id, name, 100000, []);
 
         }
 
