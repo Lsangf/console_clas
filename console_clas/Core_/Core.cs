@@ -28,7 +28,7 @@ namespace console_clas.Core_
             {
                 houses.Add(CreateHouse());
             }
-            GameCore.Main(houses, buildings, player);
+            GameCore.GameRun(houses, buildings, player);
 
         }
 

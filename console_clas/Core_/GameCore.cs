@@ -7,7 +7,7 @@ namespace console_clas.Core_
 {
     public class GameCore
     {
-        public static void Main(List<HouseBase> houses, BuildingsCity[] buildings, PlayersBase player)
+        public static void GameRun(List<HouseBase> houses, BuildingsCity[] buildings, PlayersBase player)
         {
             short i = 0;
             bool buyHouse = false;
