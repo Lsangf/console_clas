@@ -35,7 +35,7 @@
             {
                 if (value < 0)
                     throw new ArgumentException("Коэффициент не может быть отрицательным");
-                distancePriceFactorFor1000m = value;
+                this.distancePriceFactorFor1000m = value;
             }
         }
 

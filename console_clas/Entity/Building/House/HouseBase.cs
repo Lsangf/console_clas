@@ -65,14 +65,14 @@
 
         public bool CanBuy 
         {
-            get { return canBuy; } 
-            set { canBuy = value; }
+            get { return this.canBuy; } 
+            set { this.canBuy = value; }
         }
 
         public bool CanSell 
         { 
-            get { return canSell; } 
-            set { canSell = value; } 
+            get { return this.canSell; } 
+            set { this.canSell = value; } 
         }
 
         public int Price

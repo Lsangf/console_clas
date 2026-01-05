@@ -7,16 +7,14 @@ namespace console_clas.Services
     {
         public static void CanPlayerBuyHouse(HouseBase house, PlayersBase People1)
         {
-            if (People1.Balance < house.Price)
-                house.CanBuy = false;
-            house.CanBuy = true;
+            if (People1.Balance < house.Price) house.CanBuy = false;
+            else house.CanBuy = true;
         }
 
         public static void CanPlayerSellHouse(HouseBase house, PlayersBase People1)
         {
-            if (People1.BuyHouses.Count <= 0)
-                house.CanSell = false;
-            house.CanSell = true;
+            if (People1.BuyHouses.Count <= 0) house.CanSell = false;
+            else house.CanSell = true;
         }
     }
 }
