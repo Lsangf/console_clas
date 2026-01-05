@@ -37,7 +37,7 @@ namespace console_clas.Core_
                 }
                 Console.WriteLine("\n");
 
-                acceptedData = ConsoleValue.ConsoleValueAcceptance();
+                acceptedData = ConsoleValue.ConsoleValueAcceptance(houses.Count);
                 BuySell = Convert.ToBoolean(acceptedData[1]);
                 indexHouse = Convert.ToByte(acceptedData[0]);
 
@@ -46,7 +46,7 @@ namespace console_clas.Core_
                 PrintAllInfoGame.PrintInfoGame(player, houses, buildings);
 
                 Console.WriteLine("Q - Выход");
-                if (Console.ReadLine().ToUpper() == "Q")
+                if (Console.ReadLine()!.ToUpper() == "Q")
                 {
                     break;
                 }
