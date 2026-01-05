@@ -1,13 +1,14 @@
-﻿using console_clas.Building.City;
+﻿using console_clas.Entity.Building.City;
+using console_clas.Entity.Building.House;
 
-namespace console_clas.Building.House
+namespace console_clas.Services
 {
     public class CountingHousePrice
     {
         private const short BasePricePerSquareMeter = 3500;
         private const byte PricePerMeterFromCityCenter = 20;
 
-        public static int Calculation(HouseBase House, IEnumerable<BuildingsCity> City)
+        public static void Calculation(HouseBase House, IEnumerable<BuildingsCity> City)
         {
             int resultPriceDistant = 0;
             foreach (var buildings in City)
@@ -15,7 +16,7 @@ namespace console_clas.Building.House
                 resultPriceDistant += CalculationDistant(House, buildings) * buildings.DistancePriceFactorFor1000m;
             }
             int result = (House.Square * BasePricePerSquareMeter) + (CalculationDistantHouse(House) * PricePerMeterFromCityCenter) + resultPriceDistant;
-            return result;
+            House.Price = result;
         }
 
         public static int CalculationDistant(HouseBase House, BuildingsCity City)

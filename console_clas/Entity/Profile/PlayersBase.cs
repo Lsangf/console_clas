@@ -1,25 +1,12 @@
-﻿using console_clas.Building.House;
-using console_clas.Interface;
+﻿using console_clas.Entity.Building.House;
 
 namespace console_clas.Entity.Profile
 {
-    public abstract class PlayersBase : IPrintInfo
+    public abstract class PlayersBase : GameEntity
     {
-        private string id;
         private string name;
         private long balance;
         private List<HouseBase> buyHouses;
-
-        public string Id
-        {
-            get { return this.id; }
-            protected set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("ID не может быть пустым");
-                this.id = value;
-            }
-        }
 
         public string Name
         {
@@ -49,17 +36,11 @@ namespace console_clas.Entity.Profile
             protected set { this.buyHouses = value; }
         }
 
-        public PlayersBase(string id, string name, long balance, List<HouseBase> buyHouses)
+        public PlayersBase(string name, long balance, List<HouseBase> buyHouses)
         {
-            Id = id;
             Name = name;
             Balance = balance;
             BuyHouses = buyHouses;
-        }
-
-        public void PrintInfo()
-        {
-            throw new NotImplementedException();
         }
     }
 }

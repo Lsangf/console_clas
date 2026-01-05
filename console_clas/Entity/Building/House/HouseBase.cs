@@ -1,12 +1,7 @@
-﻿using console_clas.Building.City;
-using console_clas.Entity.Profile;
-using console_clas.Interface;
-
-namespace console_clas.Building.House
+﻿namespace console_clas.Entity.Building.House
 {
-    public abstract class HouseBase : IPrintInfo
+    public abstract class HouseBase : GameEntity
     {
-        private string idHouse;
         private int square;
         private int floors;
         private int rooms;
@@ -16,24 +11,12 @@ namespace console_clas.Building.House
 
         private int price;
 
-        protected HouseBase(string idHouse, int square, int floors, int rooms, (int x, int y) coordinatesHouse)
+        protected HouseBase(int square, int floors, int rooms, (int x, int y) coordinatesHouse)
         {
-            IdHouse = idHouse;
             Square = square;
             Floors = floors;
             Rooms = rooms;
             CoordinatesHouse = coordinatesHouse;
-        }
-
-        public string IdHouse
-        {
-            get { return this.idHouse; }
-            protected set
-            {
-                if (string.IsNullOrWhiteSpace(value)) 
-                    throw new ArgumentException("Id дома не может быть пустым");
-                this.idHouse = value;
-            }
         }
 
         public int Square
@@ -80,17 +63,6 @@ namespace console_clas.Building.House
             }
         }
 
-        public int Price
-        {
-            get { return this.price; }
-            protected set
-            {
-                if (value < 0) 
-                    throw new ArgumentException("Цена не может быть отрицательной");
-                this.price = value;
-            }
-        }
-
         public bool CanBuy 
         {
             get { return canBuy; } 
@@ -103,20 +75,15 @@ namespace console_clas.Building.House
             set { canSell = value; } 
         }
 
-        public void PriceUpdate(IEnumerable<BuildingsCity> City)
+        public int Price
         {
-           Price = CountingHousePrice.Calculation(this, City);
-        }
-
-        public void UpdateCanBuySell(PlayersBase People1)
-        {
-            CanBuy = ComparisonPlayerData.CanPlayerBuyHouse(this, People1);
-            CanSell = ComparisonPlayerData.CanPlayerSellHouse(this, People1);
-        }
-
-        public void PrintInfo()
-        {
-            HousePrintInfo.PrintHouseInfo(this);
+            get { return this.price; }
+            set
+            {
+                if (value < 0)
+                    throw new ArgumentException("Цена не может быть отрицательной");
+                this.price = value;
+            }
         }
     }
 }

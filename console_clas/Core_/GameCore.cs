@@ -1,6 +1,7 @@
-﻿using console_clas.Building.City;
-using console_clas.Building.House;
+﻿using console_clas.Entity.Building.City;
+using console_clas.Entity.Building.House;
 using console_clas.Entity.Profile;
+using console_clas.Services;
 
 namespace console_clas.Core_
 {
@@ -9,23 +10,25 @@ namespace console_clas.Core_
         public static void Main(List<HouseBase> houses, BuildingsCity[] buildings, PlayersBase player)
         {
             short i = 0;
+            bool buyHouse = false;
+            bool sellHouse = false;
 
             List<int> ListPrices = [];
 
             foreach (var house in houses)
             {
-                house.PriceUpdate(buildings);
+                CountingHousePrice.Calculation(house, buildings);
 
-                house.PrintInfo();
+                HousePrintInfo.PrintHouseInfo(house);
 
                 Console.WriteLine();
                 ListPrices.Add(house.Price);
                 i++;
             }
 
-            buildings[0].PrintInfo();
-            buildings[1].PrintInfo();
-            buildings[2].PrintInfo();
+            BuildingPrintInfo.PrintBuildingInfo(buildings[0]);
+            BuildingPrintInfo.PrintBuildingInfo(buildings[1]);
+            BuildingPrintInfo.PrintBuildingInfo(buildings[2]);
 
             Console.Write($"\nAll Prices: ");
             foreach (var price in ListPrices)
@@ -33,7 +36,13 @@ namespace console_clas.Core_
                 Console.Write($"{price} $ | ");
             }
             Console.WriteLine("\n");
-            Console.WriteLine($"Id: {player.Id} Name: {player.Name} Balance: {player.Balance} $\n");
+            PlayerPrintInfo.PrintPlayerInfo(player);
+
+
+
+
+
+
             Console.WriteLine("Нажмите любую клавишу чтобы выйти");
             Console.ReadLine();
         }

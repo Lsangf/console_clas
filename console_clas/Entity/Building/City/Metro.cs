@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace console_clas.Building.City
+﻿namespace console_clas.Entity.Building.City
 {
     public class Metro : BuildingsCity
     {
