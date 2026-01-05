@@ -12,13 +12,18 @@ namespace console_clas.Services
             {
                 player.Balance -= houses[indexHouse].Price;
                 player.BuyHouses.Add(houses[indexHouse]);
+                houses.Remove(houses[indexHouse]);
                 Console.WriteLine($"{player.Name} купил дом {houses[indexHouse].Id} за {houses[indexHouse].Price} $.");
             }
             else if (!BuySell && houses[indexHouse].CanSell)
             {
-                player.Balance += houses[indexHouse].Price;
-                player.BuyHouses.Remove(houses[indexHouse]);
-                Console.WriteLine($"{player.Name} продал дом {houses[indexHouse].Id} за {houses[indexHouse].Price} $.");
+                foreach (var el in player.BuyHouses)
+                {
+                    player.Balance += el.Price;
+                    houses.Add(el);
+                    Console.WriteLine($"{player.Name} продал дом {el.Id} за {el.Price} $.");
+                }
+                player.BuyHouses.Clear();
             }
             else
             {
