@@ -22,7 +22,7 @@ namespace console_clas.Entity.Profile
         public long Balance
         {
             get { return this.balance; }
-            protected set
+            set
             {
                 if (value < 0)
                     throw new ArgumentException("Баланс не может быть отрицательным");

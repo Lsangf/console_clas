@@ -51,7 +51,7 @@ namespace console_clas.Core_
             byte lengthName = 5;
             string name = GenerateRandomName(lengthName);
 
-            return new RealPlayer(name, 100000, []);
+            return new RealPlayer(name, 1000000, []);
 
         }
 

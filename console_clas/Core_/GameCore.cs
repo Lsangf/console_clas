@@ -9,42 +9,48 @@ namespace console_clas.Core_
     {
         public static void GameRun(List<HouseBase> houses, BuildingsCity[] buildings, PlayersBase player)
         {
-            short i = 0;
-            bool buyHouse = false;
-            bool sellHouse = false;
-
-            List<int> ListPrices = [];
-
-            foreach (var house in houses)
+            while (true)
             {
-                CountingHousePrice.Calculation(house, buildings);
+                short i = 0;
+                // BuySell = true - buy, false - sell
+                bool BuySell;
+                byte indexHouse;
+                string[] acceptedData;
 
-                HousePrintInfo.PrintHouseInfo(house);
+                List<int> ListPrices = [];
 
-                Console.WriteLine();
-                ListPrices.Add(house.Price);
-                i++;
+                foreach (var house in houses)
+                {
+                    CountingHousePrice.Calculation(house, buildings);
+                    ComparisonPlayerData.CanPlayerBuyHouse(house, player);
+                    ComparisonPlayerData.CanPlayerSellHouse(house, player);
+                    ListPrices.Add(house.Price);
+                    i++;
+                }
+
+                PrintAllInfoGame.PrintInfoGame(player, houses, buildings);
+
+                Console.Write($"\nAll Prices: ");
+                foreach (var price in ListPrices)
+                {
+                    Console.Write($"{price} $ | ");
+                }
+                Console.WriteLine("\n");
+
+                acceptedData = ConsoleValue.ConsoleValueAcceptance();
+                BuySell = Convert.ToBoolean(acceptedData[1]);
+                indexHouse = Convert.ToByte(acceptedData[0]);
+
+                SellBuyHouse.BuySell(player, houses, BuySell, indexHouse);
+
+                PrintAllInfoGame.PrintInfoGame(player, houses, buildings);
+
+                Console.WriteLine("Q - Выход");
+                if (Console.ReadLine().ToUpper() == "Q")
+                {
+                    break;
+                }
             }
-
-            BuildingPrintInfo.PrintBuildingInfo(buildings[0]);
-            BuildingPrintInfo.PrintBuildingInfo(buildings[1]);
-            BuildingPrintInfo.PrintBuildingInfo(buildings[2]);
-
-            Console.Write($"\nAll Prices: ");
-            foreach (var price in ListPrices)
-            {
-                Console.Write($"{price} $ | ");
-            }
-            Console.WriteLine("\n");
-            PlayerPrintInfo.PrintPlayerInfo(player);
-
-
-
-
-
-
-            Console.WriteLine("Нажмите любую клавишу чтобы выйти");
-            Console.ReadLine();
         }
     }
 }
